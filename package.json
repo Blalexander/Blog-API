@@ -2,10 +2,20 @@
   "name": "blog-api",
   "version": "1.0.0",
   "description": "blog api challenge project",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
+  "dependencies": {
+    "express": "^4.16.3",
+    "morgan": "^1.9.1",
+    "uuid": "^3.3.2"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Blalexander/blog-api.git"
@@ -16,7 +26,5 @@
     "url": "https://github.com/Blalexander/blog-api/issues"
   },
   "homepage": "https://github.com/Blalexander/blog-api#readme",
-  "dependencies": {
-    "uuid": "^3.3.2"
-  }
+  "devDependencies": {}
 }
