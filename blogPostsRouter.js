@@ -1,15 +1,16 @@
 const express = require("express");
-const router = express.Router();
+const router = express.Router(); //creates a new Express router instance
+const {BlogPosts} = require("./models"); //sets the models.js file as the location of the 'BlogPosts' array
 
-const { BlogPosts } = require("./models");
+BlogPosts.create("Blog post title #1", "Blog post content #1", "Blog post author #1");
+BlogPosts.create("Blog post title #2", "Blog post content #2", "Blog post author #2");
 
-BlogPosts.create("10 things -- you won't believe #4", "filler text", "Billy Bob");
-BlogPosts.create("Lions and tigers and bears oh my", "filler text", "Lefty Lil");
-
+//router statement to handle GET requests
 router.get("/", (req, res) => {
   res.json(BlogPosts.get());
 });
 
+//router statement to handle POST requests
 router.post("/", (req, res) => {
   const requiredFields = ["title", "content", "author"];
   for (let i = 0; i < requiredFields.length; i++) {
@@ -28,6 +29,7 @@ router.post("/", (req, res) => {
   res.status(201).json(item);
 });
 
+//router statement to handle PUT requests
 router.put("/:id", (req, res) => {
   const requiredFields = ["id", "title", "content", "author", "publishDate"];
   for (let i = 0; i < requiredFields.length; i++) {
@@ -56,10 +58,12 @@ router.put("/:id", (req, res) => {
   res.status(204).end();
 });
 
+//router statement to handle DELETE requests
 router.delete("/:id", (req, res) => {
   BlogPosts.delete(req.params.id);
   console.log(`Deleted blog post with id \`${req.params.ID}\``);
   res.status(204).end();
 });
 
-module.exports = router;
+module.exports = router; //exports router instance.  would this be similar to a 'return' statement except for routers?
+                        //why is exporting the router instance necessary?
